@@ -1,6 +1,6 @@
 {
   "name": "yourcodebook",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.6.1",
-    "@yourcodebook/local-api": "^2.0.0",
+    "@yourcodebook/local-api": "^3.0.0",
     "commander": "^8.0.0",
     "esbuild": "0.8.26",
     "typescript": "^4.3.5"
