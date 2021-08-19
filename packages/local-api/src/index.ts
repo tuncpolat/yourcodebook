@@ -14,7 +14,6 @@ export const serve = (
   app.use(createCellsRouter(filename, dir));
 
   if (useProxy) {
-    // proxy to localhost:3000 (react app)
     app.use(
       createProxyMiddleware({
         target: "http://localhost:3000",
