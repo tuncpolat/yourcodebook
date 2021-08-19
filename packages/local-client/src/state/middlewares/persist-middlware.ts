@@ -1,10 +1,10 @@
-import { Dispatch } from "redux";
-import { Action } from "../actions";
-import { ActionType } from "../action-types";
-import { saveCells } from "../action-creators";
-import { RootState } from "../reducers";
+import { Dispatch } from 'redux';
+import { Action } from '../actions';
+import { ActionType } from '../action-types';
+import { saveCells } from '../action-creators';
+import { RootState } from '../reducers';
 
-export const persistMiddleware = ({
+export const persistMiddlware = ({
   dispatch,
   getState,
 }: {
@@ -15,7 +15,7 @@ export const persistMiddleware = ({
 
   return (next: (action: Action) => void) => {
     return (action: Action) => {
-      next(action); // go to next dispatch
+      next(action);
 
       if (
         [
@@ -25,14 +25,11 @@ export const persistMiddleware = ({
           ActionType.DELETE_CELL,
         ].includes(action.type)
       ) {
-        // debouncing logic
         if (timer) {
           clearTimeout(timer);
         }
-
         timer = setTimeout(() => {
-          // save cell to local api
-          saveCells()(dispatch, getState); // need to pass dispatch and state, so it works
+          saveCells()(dispatch, getState);
         }, 250);
       }
     };

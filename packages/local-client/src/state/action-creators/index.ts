@@ -1,17 +1,17 @@
-import { Dispatch } from "redux";
-import { ActionType } from "../action-types";
+import { Dispatch } from 'redux';
+import axios from 'axios';
+import { ActionType } from '../action-types';
 import {
-  Action,
-  Direction,
   UpdateCellAction,
-  MoveCellAction,
   DeleteCellAction,
+  MoveCellAction,
   InsertCellAfterAction,
-} from "../actions";
-import { Cell, CellTypes } from "../cell";
-import bundle from "../../bundler";
-import { RootState } from "../reducers";
-import axios from "axios";
+  Direction,
+  Action,
+} from '../actions';
+import { Cell, CellTypes } from '../cell';
+import bundle from '../../bundler';
+import { RootState } from '../reducers';
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -42,13 +42,13 @@ export const moveCell = (id: string, direction: Direction): MoveCellAction => {
 
 export const insertCellAfter = (
   id: string | null,
-  type: CellTypes
+  cellType: CellTypes
 ): InsertCellAfterAction => {
   return {
     type: ActionType.INSERT_CELL_AFTER,
     payload: {
       id,
-      type,
+      type: cellType,
     },
   };
 };
@@ -79,10 +79,17 @@ export const fetchCells = () => {
     dispatch({ type: ActionType.FETCH_CELLS });
 
     try {
-      const { data }: { data: Cell[] } = await axios.get("/cells");
-      dispatch({ type: ActionType.FETCH_CELLS_COMPLETE, payload: data });
-    } catch (error) {
-      dispatch({ type: ActionType.FETCH_CELLS_ERROR, payload: error.message });
+      const { data }: { data: Cell[] } = await axios.get('/cells');
+
+      dispatch({
+        type: ActionType.FETCH_CELLS_COMPLETE,
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: ActionType.FETCH_CELLS_ERROR,
+        payload: err.message,
+      });
     }
   };
 };
@@ -96,9 +103,12 @@ export const saveCells = () => {
     const cells = order.map((id) => data[id]);
 
     try {
-      await axios.post("/cells", { cells });
-    } catch (error) {
-      dispatch({ type: ActionType.SAVE_CELLS_ERROR, payload: error.message });
+      await axios.post('/cells', { cells });
+    } catch (err) {
+      dispatch({
+        type: ActionType.SAVE_CELLS_ERROR,
+        payload: err.message,
+      });
     }
   };
 };
