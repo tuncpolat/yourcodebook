@@ -1,6 +1,6 @@
 {
   "name": "yourcodebook",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -17,11 +17,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@yourcodebook/local-client": "^1.0.0"
+    "@yourcodebook/local-client": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.6.1",
-    "@yourcodebook/local-api": "^1.0.0",
+    "@yourcodebook/local-api": "^2.0.0",
     "commander": "^8.0.0",
     "esbuild": "0.8.26",
     "typescript": "^4.3.5"
