@@ -1,0 +1,17 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   scope: 'local-api',
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': '..\\..\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js',
+0 silly argv   pkg: 'cors'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath C:\Users\tunc-\Desktop\jbook
+3 error FetchError: request to https://registry.npmjs.org/cors failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org
+3 error     at ClientRequest.<anonymous> (C:\Users\tunc-\AppData\Roaming\npm\node_modules\lerna\node_modules\node-fetch-npm\src\index.js:68:14)
+3 error     at ClientRequest.emit (events.js:314:20)
+3 error     at TLSSocket.socketErrorListener (_http_client.js:428:9)
+3 error     at TLSSocket.emit (events.js:314:20)
+3 error     at emitErrorNT (internal/streams/destroy.js:92:8)
+3 error     at emitErrorAndCloseNT (internal/streams/destroy.js:60:3)
